@@ -2,6 +2,7 @@
 //php artisan serve para iniciar o servidor
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeriesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,9 +24,13 @@ Route::get('/soma/{v1}/{v2}', function($v1, $v2){
     return "A soma é {$soma}";
 });
 
-Route::get('/adicionar-produto/{param1}/{param2}', function($p1, $p2 = null){
-    $textto = "O parâmetro 1 da URL é: {$p1} <br>";
-    if($p2 != null)
-        $textto .= "O parâmetro 2 da URL é: {$p2}";
-    return $textto;
+Route::get('/adicionar-produto/{param1}/{param2?}', function($param1, $param2 = null){
+    $texto = "O parâmetro 1 da URL é {$param1} <br>";
+    if($param2 != null)
+        $texto .= "O parâmetro 2 da URL é {$param2}<br>";
+    return $texto;
 });
+
+
+Route::get('/series', [SeriesController::class, 'listarSeries']);
+
