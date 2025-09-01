@@ -6,19 +6,22 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    public function listarSeries(){
+    
+    public function listarSeries() {
         $series = [
-            "Breaking Bad",
-            "Game of Thrones",
-            "The Witcher",
-            "Stranger Things"
-        ];
-
+                'Lost',
+                'Greys Anatomy',
+                'Agents of SHIELD',
+                'Breaking Bad',
+                'Eu a Patroa e as Crianças'
+            ];
         $html = "<ul>";
-        foreach($series as $serie){
-            $html .= "<li>{$serie}</li>";
+        foreach ($series as $serie) {
+            $html .= "<li>$serie</li>";
         }
         $html .= "</ul>";
+        
         return $html;
     }
+
 }
