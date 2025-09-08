@@ -20,6 +20,31 @@ Route::get('soma', function(){
     return "A soma é {$soma}";
 });
 
+// 1. Crie uma rota chamada "/contato" que exiba o texto: "Essa é a página de contato da empresa X".
+Route::get('/contato', function(){
+    return "Essa é a página de contato da empresa X";
+});
+
+// 2. Crie uma rota chamada "/saudacao/{nome}" que receba um parâmetro e mostre: Exemplo: "/saudacao/Ana" → "Olá, Ana! Seja bem-vinda ao sistema."
+
+Route::get('/saudacao/{nome}', function($nome){
+    return "Olá, {$nome}! Seja bem-vinda ao sistema.";
+});
+
+// 3. Crie uma rota chamada "/dobro/{numero}" que receba um número e exiba o dobro dele.
+Route::get('/dobro/{numero}', function($numero){
+    $dobro = $numero * 2;
+    return "O dobro de {$numero} é {$dobro}";
+});
+
+// 4. Crie uma rota chamada "/dataHora" que exiba a data e hora atual do servidor.
+route::get('/dataHora', function(){
+    $dataHora = date('d/m/Y H:i:s');
+    return "Data e hora atual: {$dataHora}";
+});
+
+
+
 //Rota com passagem de parâmetros
 Route::get('/somaa/{v1}/{v2}', function($v1, $v2){
     $soma = $v1 + $v2;
