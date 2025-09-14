@@ -1,34 +1,39 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SeriesController;
-use App\Http\Controllers\HomeController;
+use Carbon\Carbon;
+// use App\Http\Controllers\SeriesController;
+// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TarefaController;
 
 Route::get('/contato', function(){
-    return "Essa é a página de contato da empresa X";
+    return "Essa é a página de contato da empresa X!";
 });
 
 // 2. Crie uma rota chamada "/saudacao/{nome}" que receba um parâmetro e mostre: Exemplo: "/saudacao/Ana" → "Olá, Ana! Seja bem-vinda ao sistema."
 
 Route::get('/saudacao/{nome}', function($nome){
-    return "Olá, {$nome}! Seja bem-vinda ao sistema.";
+    return "Olá, {$nome}! Seja bem-vindo(a) ao sistema.";
 });
 
 // 3. Crie uma rota chamada "/dobro/{numero}" que receba um número e exiba o dobro dele.
 Route::get('/dobro/{numero}', function($numero){
     $dobro = $numero * 2;
-    return "O dobro de {$numero} é {$dobro}";
+    return "O dobro de {$numero} é {$dobro}.";
 });
 
 // 4. Crie uma rota chamada "/dataHora" que exiba a data e hora atual do servidor.
 route::get('/dataHora', function(){
-    $dataHora = date('d/m/Y H:i:s');
+    $dataHora =  Carbon::now('America/Sao_Paulo')->format('d/m/Y H:i:s');
     return "Data e hora atual: {$dataHora}";
 });
 
 // 5. Crie uma rota chamada "/tecnologias" que exiba em uma lista HTML algumas tecnologias que você gosta (ex.: PHP, Laravel, JavaScript, Python, etc.).
 
-Route::get('/tecnlogias', function () {
+Route::get('/tecnologias', function () {
     $tecnologias = [
                 'PHP',
                 'SQL',
@@ -68,7 +73,7 @@ Route::get('/noticias', function () {
     $noticias = [
         'Ataque ao GitHub!!!!! Milhares de diretorios vazados.',
         'Extra! Prompts que adicionam criptomoedas em sua carteira.',
-        'Java completamente extinto'
+        'Java completamente extinto.'
     ];
 
     $html = "<h3>Notícias </h3><ul>";
@@ -80,6 +85,17 @@ Route::get('/noticias', function () {
     return $html;
 });
 
+# 9. Crie uma rota chamada "/produtos" que exiba uma lista de produtos (nome e preço).
+Route::get('/produtos', [ProdutoController::class, 'listar']);
+
+#11. Crie ama rota chamada "/clientes/{id}" deve simular a busca de um cliente pelo ID e exibir um nome fictício.
+Route::get('/clientes/{id}', [ClienteController::class, 'mostrar']);
+
+#13. Crie a rota "/blog" deve retornar os 3 últimos posts fictícios de um blog.
+Route::get('/blog', [BlogController::class, 'ultimosPosts']);
+
+#15. Crie uma rota chamada "/tarefas" deve retornar uma lista de tarefas do dia (ex.: "Estudar Laravel", "Revisar PHP", "Ler documentação").
+Route::get('/tarefas', [TarefaController::class, 'listar']);
 
 
 // Route::get('/', function () {
