@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    
-    public function listarSeries() {
+
+    public function index() {
         $series = [
                 'Lost',
                 'Greys Anatomy',
@@ -20,8 +20,14 @@ class SeriesController extends Controller
             $html .= "<li>$serie</li>";
         }
         $html .= "</ul>";
-        
-        return $html;
+
+        return view('series.index', ['html' => $html]);
+    }
+
+
+
+    public function create(){
+        return view('series.create');
     }
 
 }
