@@ -148,10 +148,17 @@ Route::get('/series2', function () {
     return $html;
 });
 
-Route::get('/series', [SeriesController::class, 'listarSeries']);
+// Route::get('/series', [SeriesController::class, 'listarSeries']);
 Route::get('/series/index', [SeriesController::class, 'index']);
 Route::get('/series/create', [SeriesController::class, 'create']);
 
 Route::get('/home', HomeController::class);
 Route::get('/principal', [HomeController::class, 'principal']);
 
+Route::get('/layout', function(){
+    return view('layout/layout');
+});
+
+Route::get('/layoutTeste', function(){
+    return view('layout/layoutTeste');
+});
