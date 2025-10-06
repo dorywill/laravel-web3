@@ -57,7 +57,6 @@
 
 <br>
 @yield('conteudo')
-
 <br>
 
 

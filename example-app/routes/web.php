@@ -160,10 +160,8 @@ Route::get('/layout', function(){
 });
 
 Route::get('/layoutTeste', function(){
-    return view('layout/layoutTeste',[
-        'produto1' => 'Monitor Positivo',
-        'produto2' => 'Mousepad',
-        'produto3' => 'Teclado dell'
-    ]);
+
+    $produtos = array('Monitor Positivo', 'Mousepad', 'Teclado dell');
+    return view('layout/layoutTeste', compact('produtos'));
 
 });

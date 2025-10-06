@@ -1,14 +1,29 @@
 @extends('layout/layout')
 
 @section('title', 'Produtos')
-@section('cabecalho', 'Produto')
+@section('cabecalho')
+    Listagem de Produtos ({{ count($produtos) }} registros)
+@endsection
 
 @section('conteudo')
-    <h5>Produto 1</h5>
-    <p>Descrição Produto 1</p><br>
-    <h5>Produto 2</h5>
-    <p>Descrição Produto 2</p><br>
-    <h5>Produto 3</h5>
-    <p>Descrição Produto 3</p><br>
+
+    @foreach ($produtos as $produto)
+        @if($loop->first)
+            Esse é o primeiro elemento: {{ $produto }}
+        @endif
+
+        @if($loop->last)
+            Esse é o ultimo elemento: {{ $produto }}
+        @endif
+
+        <h5>{{ $produto }}</h5>
+        Descrição produto ... <br>
+        Data cadastro: {{ date('d/m/Y H:i:s') }}
+        <br><br>
+
+        
+    @endforeach
+   
+    
 
 @endsection
